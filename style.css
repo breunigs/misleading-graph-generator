@@ -1,0 +1,81 @@
+body {
+  font: 14px sans-serif;
+  padding: 0 10px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+svg {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.group {
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.group + .group {
+  margin-left: 20px;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+  display: block;
+}
+
+input {
+  display: block;
+  border: 1px solid #444;
+  padding: 5px;
+  outline: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 5px;
+  border: 1px solid #444;
+  outline: none;
+  display: block;
+  box-sizing: border-box;
+  font: 14px sans-serif;
+  overflow: hidden;
+  resize: none;
+}
+
+input:active, input:focus, textarea:active, textarea:focus {
+  box-shadow: 0 0 5px #aaa;
+}
+
+.blue {
+  border-color: steelblue;
+}
+
+.blue:active, .blue:focus {
+  box-shadow: 0 0 5px steelblue;
+}
+
+.red {
+  border-color: red;
+}
+
+.red:active, .red:focus {
+  box-shadow: 0 0 5px indianred;
+}
