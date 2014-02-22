@@ -7,7 +7,7 @@ var area0 = document.getElementById('graph0'),
 
 // DEFAULT EXAMPLE /////////////////////////////////////////////////////
 
-var defaultExample = '#%7B%22area0%22%3A%2258.13%5Cn53.98%5Cn67.00%5Cn89.70%5Cn99.00%5Cn130.28%5Cn166.70%5Cn234.98%5Cn345.44%5Cn443.34%5Cn543.70%5Cn580.13%5Cn605.23%5Cn622.77%5Cn626.20%5Cn628.44%5Cn636.23%5Cn633.68%5Cn624.31%5Cn629.32%5Cn618.63%5Cn599.55%5Cn609.86%5Cn617.62%5Cn614.48%5Cn606.98%5Cn%20%20%20%20%22%2C%22area1%22%3A%223.41%5Cn4.55%5Cn6.78%5Cn7.85%5Cn8.92%5Cn9.92%5Cn10.13%5Cn12.23%5Cn13.45%5Cn16.04%5Cn18.03%5Cn21.02%5Cn22.34%5Cn20.15%5Cn21.26%5Cn31.04%5Cn35.04%5Cn41.02%5Cn43.05%5Cn46.03%5Cn51.03%5Cn53.42%5Cn57.82%5Cn59.01%5Cn56.03%5Cn58.01%5Cn%20%20%20%20%22%2C%22areax%22%3A%22%20%201-May-12%5Cn%20%2030-Apr-12%5Cn%20%2027-Apr-12%5Cn%20%2026-Apr-12%5Cn%20%2025-Apr-12%5Cn%20%2024-Apr-12%5Cn%20%2023-Apr-12%5Cn%20%2020-Apr-12%5Cn%20%2019-Apr-12%5Cn%20%2018-Apr-12%5Cn%20%2017-Apr-12%5Cn%20%2016-Apr-12%5Cn%20%2013-Apr-12%5Cn%20%2012-Apr-12%5Cn%20%2011-Apr-12%5Cn%20%2010-Apr-12%5Cn%20%209-Apr-12%5Cn%20%205-Apr-12%5Cn%20%204-Apr-12%5Cn%20%203-Apr-12%5Cn%20%202-Apr-12%5Cn%20%2030-Mar-12%5Cn%20%2029-Mar-12%5Cn%20%2028-Mar-12%5Cn%20%2027-Mar-12%5Cn%20%2026-Mar-12%5Cn%20%20%20%20%22%2C%22headline%22%3A%22Scandalous%20Headline%22%2C%22lbl0%22%3A%22Global%20Warming%22%2C%22lbl1%22%3A%22Pirates%22%7D'
+var defaultExample = 'N4IgzgxghgNgpgBhALhDA9gcxAGnNeARhTQEsA7OKAJ1xBqqVQCYBmBBAHXNYFYPufAeQAs/Lj16EJANnHc5w5gE4OElWu4aEhLaoTNuhViM3lmzM5bXqA7OPUOtT8w4mFCADgN9BN90Jmxg66PNI23Ly2nsq2tpFuEiLsEeT2/tzpqcqJWuGpYv4SvInFyRnkHtaphDL6NZ6mFbX1ZiK2RZmeLvmdlbVFSHgMUMSoHQB0tiLMntEIInPevJkIE54y8WmEEzoyMp4qzAcqrJk7hDkihCIyJjd35xOmhLasrwhvr6G2O3fXt3ugJET08nlYJ2Ux0OyjOaWYExuswWSxRnkyCNM3QhvGxcmUGImm1sqmYyVJIhB8ImOTYFNYFMyrAmbAQsV4MjZ9hkP2ZUmYDyB/yZUyheNxvAhMkyIl2MjEOPFBLSstYAv+guuKxVExKyk57INtmlOriMX5l35hh1ykOkOhp0yvERcUVkrkGydE3eOUIAt9Fi9nktfpDgbSzrmn3eHS+v0yMhZsZj0e+Cee/otAetxqJcdTycytl2+dLcLiz25XI5XJNFdsDqh9q2FabMMbzBbnm9R3tkK6LN77f7aW7rG8i3mk+DA4OKKnSx+3dhHzLOeUiJTa8yG8lAI1wJ3UzdJ5bG/BHvdEtYZ5pqOnaO43im+6FJmYdBGAA8SJd45VYmtP84T/Kk/21P8TT/LY/3RACSSMW13FtUJLkORDwQwsDbQg20oNtGDbTgtDlUuVREOUVDlChCiQOo7Ccgo/DYgo4jqOVaotA4UJrGtaw4WsKlrG1awTWsLZrDg6wOJ0dQdGIPAAAsqAAExgCg4BIAAhUhMEwOBqAAAgAYXQABbAAHABXAAXAyTMU0gLLAQyABlVJcmz0Dc9ByH0ozXNIAAzTS8BgAAjGAmBAAAVagoHIMBSDALyjNMqzyBsugIpgMYQECkLDIAUS/Cy4AgGyEogABPQyAHEDLMhLqpAABfIAAAA==';
 
 // RANDOM TOOLS ////////////////////////////////////////////////////////
 
@@ -18,6 +18,24 @@ function observe(element, event, handler) {
   }
 }
 
+function getRadioValue(name) {
+  var r = document.getElementsByName(name);
+  for (var i = 0; i < r.length; i++) {
+    if(r[i].checked) return r[i].value;
+  }
+  return null;
+}
+
+function setRadioValue(name, value) {
+  var r = document.getElementsByName(name);
+  for (var i = 0; i < r.length; i++) {
+    r[i].checked = r[i].value === value;
+  }
+}
+
+function clean(input) {
+  return ((input || '' ) + '').trim();
+}
 
 // AUTOSIZE TEXTAREAS //////////////////////////////////////////////////
 
@@ -53,6 +71,8 @@ function autosizeTextarea(text) {
 
 function putIntoHash() {
   var x = {
+    scale0: getRadioValue('scale0'),
+    scale1: getRadioValue('scale1'),
     area0: area0.value.trim(),
     area1: area1.value.trim(),
     areax: areax.value.trim(),
@@ -61,8 +81,9 @@ function putIntoHash() {
     lbl1: lbl1.value.trim()
   };
 
-  var s = '#' + encodeURIComponent(JSON.stringify(x));
+  var s = '#' + LZString.compressToBase64(JSON.stringify(x));
   window.location.hash = s;
+  document.getElementById('sharelink').setAttribute('href', s);
 }
 
 function getFromHash() {
@@ -70,14 +91,16 @@ function getFromHash() {
 
   if(h === '') h = defaultExample;
 
-  var json = JSON.parse(decodeURIComponent(h));
+  var json = JSON.parse(LZString.decompressFromBase64(h));
 
-  area0.value = json['area0'].trim() || '';
-  area1.value = json['area1'].trim() || '';
-  areax.value = json['areax'].trim() || '';
-  headline.value = json['headline'].trim() || '';
-  lbl0.value = json['lbl0'].trim() || '';
-  lbl1.value = json['lbl1'].trim() || '';
+  setRadioValue('scale0', clean(json['scale0']));
+  setRadioValue('scale1', clean(json['scale1']));
+  area0.value = clean(json['area0']);
+  area1.value = clean(json['area1']);
+  areax.value = clean(json['areax']);
+  headline.value = clean(json['headline']);
+  lbl0.value = clean(json['lbl0']);
+  lbl1.value = clean(json['lbl1']);
 }
 
 
@@ -109,46 +132,53 @@ function appendPath(data, color) {
 // SVG BASIC SETUP /////////////////////////////////////////////////////
 
 var maxWidth = 800,
-    margin = 50;
+    margin = 30;
 
-var eighty = Math.round(document.documentElement.clientWidth * 0.8),
-    width = Math.min(maxWidth, eighty) - 2*margin,
+var eighty = Math.round(document.documentElement.clientWidth * 0.9),
+    width = Math.min(maxWidth, eighty) - 2*margin - 80,
     height = Math.round(0.5*width - margin);
-
-var x = d3.scale.linear().domain([-width / 2, width / 2]).range([0, width]),
-    y0 = d3.scale.linear().range([height, 0]),
-    y1 = d3.scale.linear().range([height, 0]);
-
-var yAxisLeft = d3.svg.axis().scale(y0).orient('left').ticks(5),
-    yAxisRight = d3.svg.axis().scale(y1).orient('right').ticks(5);
-
-var valueline0 = d3.svg.line()
-  .x(function(d, i) { return x(i); })
-  .y(function(d) { return y0(d); });
-
-var valueline1 = d3.svg.line()
-  .x(function(d, i) { return x(i); })
-  .y(function(d) { return y1(d); });
 
 
 var svg = d3.select('svg')
-  .attr('width', width + 2*margin)
-  .attr('height', height + margin)
+  .attr('width', width + 2*margin + 80)
+  .attr('height', height + margin + 10)
   .append('g')
-    .attr('transform', 'translate(' + margin + ',' + 0 + ')');
+    .attr('transform', 'translate(' + (margin + 80) + ',' + 10 + ')');
 
 // RENDER ACTUAL GRAPHS ////////////////////////////////////////////////
 
 function renderSVG() {
+  // clear old
   svg.selectAll('g, path').remove();
 
+  // gather data
   var graph0 = area0.value.trim().split('\n').map(parseFloat);
   var graph1 = area1.value.trim().split('\n').map(parseFloat);
+  var scale0 = getRadioValue('scale0');
+  var scale1 = getRadioValue('scale1');
+
+
+  var x = d3.scale.linear().domain([-width / 2, width / 2]).range([0, width]),
+      y0 = d3.scale[scale0]().range([height, 0]),
+      y1 = d3.scale[scale1]().range([height, 0]);
+
+  var yAxisLeft = d3.svg.axis().scale(y0).orient('left').ticks(5),
+      yAxisRight = d3.svg.axis().scale(y1).orient('right').ticks(5);
+
+  //
+  var valueline0 = d3.svg.line()
+    .x(function(d, i) { return x(i); })
+    .y(function(d) { return y0(d); });
+
+  var valueline1 = d3.svg.line()
+    .x(function(d, i) { return x(i); })
+    .y(function(d) { return y1(d); });
+
 
   // scale to data
-  x.domain([0, Math.min(graph0.length, graph1.length) - 1]);
-  y0.domain([0, d3.max(graph0)]);
-  y1.domain([0, d3.max(graph1)]);
+  x.domain([-1, Math.min(graph0.length, graph1.length)]);
+  y0.domain(d3.extent(graph0));
+  y1.domain(d3.extent(graph1));
 
   // draw graphs
   appendPath(valueline0(graph0), 'steelblue');

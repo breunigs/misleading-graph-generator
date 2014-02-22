@@ -31,11 +31,10 @@ svg {
 }
 
 
-label {
+label, .oneliner span {
   display: block;
   margin-bottom: 3px;
   font-weight: bold;
-  display: block;
 }
 
 input {
@@ -46,6 +45,22 @@ input {
   width: 100%;
   box-sizing: border-box;
 }
+
+input[type=radio] {
+  display: inline;
+  width: auto;
+  box-shadow: none !important;
+}
+
+.oneliner label {
+  display: inline-block;
+  font-weight: normal;
+}
+
+.oneliner label + label {
+  margin-left: 10px;
+}
+
 
 textarea {
   width: 100%;
@@ -78,4 +93,8 @@ input:active, input:focus, textarea:active, textarea:focus {
 
 .red:active, .red:focus {
   box-shadow: 0 0 5px indianred;
+}
+
+li {
+  margin-bottom: 10px;
 }
