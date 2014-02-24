@@ -1,0 +1,19 @@
+          systemd debutils
+
+2013-07    1700    151800
+2013-08    1750    147800
+2013-09    1800    150900
+2013-10    1900    156000
+2013-11    2950    158200
+           3300    160000
+           4200    161000
+2013-12    7100    161100
+           8800    161000
+           9800    161800
+2014-01   10200    159700
+          10900    159400
+          11700    163000
+2014-02   12000    164200
+
+http://qa.debian.org/popcon-graph.php?packages=systemd&show_installed=on&want_legend=on&want_ticks=on&from_date=2013-07-01&to_date=2014-01-30&hlght_date=&date_fmt=%25Y-%25m&beenhere=1
+http://qa.debian.org/popcon-graph.php?packages=debianutils&show_installed=on&want_legend=on&want_ticks=on&from_date=2013-07-01&to_date=2014-01-30&hlght_date=&date_fmt=%25Y-%25m&beenhere=1
